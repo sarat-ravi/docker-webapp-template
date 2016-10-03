@@ -1,0 +1,14 @@
+{
+    "name": "sarattall_web_app",
+    "version": "1.0.0",
+    "description": "The web app for personal website",
+    "author": "Sarat Tallamraju <saratgr8@gmail.com>",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "express": "^4.13.3"
+    }
+}
+
