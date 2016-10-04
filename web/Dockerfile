@@ -5,6 +5,7 @@ RUN groupadd -r app && useradd -r -g app app
 
 # Create app directory
 RUN mkdir -p /usr/src/app
+RUN mkdir -p /var/eb_log
 WORKDIR /usr/src/app
 
 # Install app dependencies
