@@ -15,7 +15,7 @@ COPY package.json /usr/src/app/
 # Bundle app source
 COPY . /usr/src/app
 
-EXPOSE 80
+EXPOSE 8080
 
 # TODO: Use index.js instead.
 CMD [ "npm", "start" ]

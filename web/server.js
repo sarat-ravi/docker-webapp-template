@@ -1,15 +1,28 @@
 // 'use strict';
 
-const express = require('express');
+var express = require('express');
+var router = express.Router();
 
 // Constants
-const PORT = 80;
+const PORT = 8080;
 
-// App
-const app = express();
-app.get('/', function (req, res) {
+var app = express();
+
+function reqLogger(req, res, next) {
+    console.log("", Date.now(), req.method, req.originalUrl);
+    next();
+};
+
+router.use(reqLogger);
+
+router.get('/', function (req, res) {
   res.send('Hello world v7\n');
 });
 
+router.get('/status', function (req, res) {
+  res.send('good\n');
+});
+
+app.use(router)
 app.listen(PORT);
 console.log('Running on http://localhost:' + PORT);

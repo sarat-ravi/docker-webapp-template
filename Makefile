@@ -29,8 +29,8 @@ image: node_modules
 	cd ${WEB_DIR} && docker build -t ${IMAGE_TAG} .
 
 .PHONY: run
-run: app
-	cd ${WEB_DIR} && docker run -p 8080:80 -d --name ${APP_NAME}  ${IMAGE_TAG}
+run: image
+	cd ${WEB_DIR} && docker run -p 8080:8080 -d --name ${APP_NAME}  ${IMAGE_TAG}
 
 .PHONY: dev 
 dev:
