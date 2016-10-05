@@ -18,12 +18,16 @@ image:
 app: node_modules image
 
 .PHONY: run
-run:
+run: app
 	cd ${WEB_DIR} && docker run -p 8080:80 -d --name ${APP_NAME}  ${IMAGE_TAG}
 
-.PHONY: deploy
-deploy:
-	cd ${WEB_DIR} && eb deploy 
+.PHONY: dev 
+dev:
+	cd ${WEB_DIR} && eb deploy ${APP_NAME}-dev
+
+.PHONY: prod
+prod:
+	cd ${WEB_DIR} && eb deploy ${APP_NAME}-prod
 
 .PHONY: kill
 kill:
