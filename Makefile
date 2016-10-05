@@ -10,7 +10,8 @@ help:
 	@echo "BASIC USAGE"
 	@echo "--------------------------------------------------"
 	@echo "image	-	Create a Docker image with the app."
-	@echo "run	- 	Run the Docker container from the image locally."
+	@echo "run	- 	Run the app locally using node (Without Docker)"
+	@echo "drun	- 	Run the Docker container from the image locally."
 	@echo "kill	- 	Kill the running Docker container."
 	@echo "clean	- 	Delete the Docker image, along with any other run artifacts."
 	@echo
@@ -23,13 +24,17 @@ help:
 node_modules:
 	cd ${WEB_DIR} && npm install
 
+.PHONY: run
+run:
+	cd ${WEB_DIR} && npm start
+
 .PHONY: image
 image: node_modules
 	-cd ${WEB_DIR} && docker rmi -f ${IMAGE_TAG}
 	cd ${WEB_DIR} && docker build -t ${IMAGE_TAG} .
 
-.PHONY: run
-run: image
+.PHONY: drun
+drun: image
 	cd ${WEB_DIR} && docker run -p 8080:8080 -d --name ${APP_NAME}  ${IMAGE_TAG}
 
 .PHONY: dev 
