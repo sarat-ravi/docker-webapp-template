@@ -9,7 +9,8 @@ const PORT = 8080;
 var app = express();
 
 function reqLogger(req, res, next) {
-    console.log("", Date.now(), req.method, req.originalUrl);
+    var currentDate = new Date().toISOString();
+    console.log("", currentDate , req.method, req.originalUrl);
     next();
 };
 
